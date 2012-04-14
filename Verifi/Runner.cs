@@ -1,16 +1,36 @@
-﻿using System.ComponentModel.Composition;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.Composition;
 
 namespace Verifi
 {
     [Export]
     public class Runner
     {
-        public void Run(string[] args)
+        [ImportMany]
+        private IEnumerable<Verification> _verifications = null;
+
+        public RunResults Run()
         {
-            Console.WriteLine("I'm in the runner! With the args!");
-            foreach(var arg in args)
-                Console.WriteLine(arg);
+            var passing = new List<Verification>();
+            var failing = new List<Verification>();
+            foreach (var verificiation in _verifications)
+            {
+                if (verificiation.Run())
+                {
+                    passing.Add(verificiation);
+                }
+                else
+                {
+                    failing.Add(verificiation);
+                }
+            }
+
+            var results = new RunResults(passing, failing);
+
+            Events.Publish(results);
+
+            return results;
         }
     }
 }
