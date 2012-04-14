@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace Verifi
 {
@@ -8,6 +9,9 @@ namespace Verifi
         {
             Passed = passed;
             Failed = failed;
+
+            PassCount = passed.Count();
+            FailCount = failed.Count();
         }
 
         public IEnumerable<Verification> Passed { get; private set; }

@@ -1,7 +1,7 @@
 ﻿using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.Linq;
-using System.ComponentModel.Composition.Primitives;
 
 namespace Verifi
 {
@@ -15,24 +15,7 @@ namespace Verifi
 
             var container = new CompositionContainer(aggregateCatalog);
 
-            var batch = new CompositionBatch();
-
-            foreach (var arg in args)
-            {
-                var values = arg.Split(':');
-                if (values.Length != 2)
-                {
-                    Console.Error.WriteLine("Args should be in the form name:value. Not sure what to do with `{0}`", arg);
-                    continue;
-                }
-
-                var name = values.First();
-                var value = values.Last();
-
-                batch.AddExport(new Export("Arg:" + name, () => value));
-            }
-
-            container.Compose(batch);
+            Args.Add(container, args);
 
             RunResults results;
             using (Events.Add(new ConsoleReporter()))
