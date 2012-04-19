@@ -10,27 +10,34 @@ namespace Verifi
         [ImportMany]
         private IEnumerable<Verification> _verifications = null;
 
+        [ImportMany]
+        private ReporterFilter _reporterFilter = null;
+
         public RunResults Run()
         {
-            var passing = new List<Verification>();
-            var failing = new List<Verification>();
-            foreach (var verificiation in _verifications)
+            using (_reporterFilter.AddReporters())
             {
-                if (verificiation.Run())
+
+                var passing = new List<Verification>();
+                var failing = new List<Verification>();
+                foreach (var verificiation in _verifications)
                 {
-                    passing.Add(verificiation);
+                    if (verificiation.Run())
+                    {
+                        passing.Add(verificiation);
+                    }
+                    else
+                    {
+                        failing.Add(verificiation);
+                    }
                 }
-                else
-                {
-                    failing.Add(verificiation);
-                }
+
+                var results = new RunResults(passing, failing);
+
+                Events.Publish(results);
+
+                return results;
             }
-
-            var results = new RunResults(passing, failing);
-
-            Events.Publish(results);
-
-            return results;
         }
     }
 }

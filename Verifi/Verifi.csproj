@@ -51,11 +51,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgAttribute.cs" />
+    <Compile Include="CompositeReporter.cs" />
     <Compile Include="ConsoleReporter.cs" />
     <Compile Include="Events.cs" />
+    <Compile Include="IReporter.cs" />
     <Compile Include="Notice.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporterAttribute.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="RunResults.cs" />
     <Compile Include="Verification.cs" />

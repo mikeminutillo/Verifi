@@ -17,10 +17,7 @@ namespace Verifi
 
             Args.Add(container, args);
 
-            RunResults results;
-
-            using (Events.Add(new ConsoleReporter()))
-                results = container.GetExportedValue<Runner>().Run();
+            var results = container.GetExportedValue<Runner>().Run();
 
             if (results == null)
             {

@@ -4,7 +4,8 @@ using Newtonsoft.Json;
 
 namespace Verifi
 {
-    class ConsoleReporter : IHandle<Notice>, IHandle<Error>, IHandle<RunResults>
+    [Reporter("console")]
+    class ConsoleReporter : IReporter
     {
         public void Handle(Notice message)
         {
