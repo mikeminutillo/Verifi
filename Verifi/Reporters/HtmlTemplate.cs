@@ -32,17 +32,17 @@ namespace Verifi.Reporters
 		.notice {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
 		.fail.notice {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
 		.note.notice { background:#FFF6BF;color:#514721;border-color:#FFD324;}
-		
-		#failed { background-color: #8a1f11; width: 100%; }
-		#succeeded { background-color: #264409; width: ");
+
+		#failed { background:#8a1f11; width: 100%; border: 1px solid #ddd;}
+		#succeeded { background:#C6D880; width: ");
             
             #line 18 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Results.PassRate));
             
             #line default
             #line hidden
-            this.Write("% }\r\n\t\t\r\n\t\t#stats { padding:.8em;margin-bottom:1em;border:2px solid #ddd;\t}\r\n\t\t\r\n" +
-                    "\t</style>\r\n</head>\r\n<body>\r\n\t<div id=\"stats\">\r\n\t\t<h1>Verifi: ");
+            this.Write("% }\r\n\r\n\t\t#stats { padding:.8em;margin-bottom:1em;border:2px solid #ddd;\t}\r\n\t\t\r\n\t<" +
+                    "/style>\r\n</head>\r\n<body>\r\n\t<div id=\"stats\">\r\n\t\t<h1>Verifi: ");
             
             #line 26 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DateTime.Now.ToLongDateString()));
@@ -57,170 +57,170 @@ namespace Verifi.Reporters
             #line default
             #line hidden
             this.Write("</h1>\r\n\t\t<div id=\"failed\">\r\n\t\t\t<div id=\"succeeded\">&nbsp;\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t" +
-                    "\tPassed: <strong>");
+                    "\t<br/>\r\n\t\tPassed: <strong>");
             
-            #line 31 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 32 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Results.PassCount));
             
             #line default
             #line hidden
             this.Write("</strong> - Failed: <strong>");
             
-            #line 31 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 32 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Results.FailCount));
             
             #line default
             #line hidden
             this.Write("</strong> - \r\n\t\tTotal: <strong>");
             
-            #line 32 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 33 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Results.Total));
             
             #line default
             #line hidden
             this.Write("</strong> - Pass rate: <strong>");
             
-            #line 32 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 33 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Results.PassRate.ToString("0.##")));
             
             #line default
             #line hidden
             this.Write("%</strong><br/>\r\n\t</div>\r\n\r\n\t");
             
-            #line 35 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 36 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  foreach(var verification in Results.Failed) { 
             
             #line default
             #line hidden
             this.Write("\t\t<div class=\"verification failed\">\r\n\t\t\t<h3>");
             
-            #line 37 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 38 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(verification.Name));
             
             #line default
             #line hidden
             this.Write("</h3>\r\n\t\t\t");
             
-            #line 38 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 39 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  foreach(var notification in Notifications[verification]) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t<div class=\"notice ");
             
-            #line 39 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 40 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(notification.Prefix.ToLower()));
             
             #line default
             #line hidden
             this.Write("\">\r\n\t\t\t\t\t");
             
-            #line 40 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 41 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(notification.Description));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 41 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 42 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  if(notification.Context != null) { 
             
             #line default
             #line hidden
             this.Write("<pre>\r\n");
             
-            #line 43 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 44 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToJson(notification.Context)));
             
             #line default
             #line hidden
             this.Write("\r\n</pre>\r\n");
             
-            #line 45 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 46 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t</div>\r\n\t\t\t");
             
-            #line 47 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 48 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t\t</div>\r\n\r\n\t");
             
-            #line 50 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 51 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\r\n\r\n\t");
             
-            #line 53 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 54 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  foreach(var verification in Results.Passed) { 
             
             #line default
             #line hidden
             this.Write("\t\t<div class=\"verification successful\">\r\n\t\t\t<h3>");
             
-            #line 55 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 56 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(verification.Name));
             
             #line default
             #line hidden
             this.Write("</h3>\r\n\t\t\t");
             
-            #line 56 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 57 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  foreach(var notification in Notifications[verification]) { 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t<div class=\"notice ");
             
-            #line 57 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 58 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(notification.Prefix.ToLower()));
             
             #line default
             #line hidden
             this.Write("\">\r\n\t\t\t\t\t");
             
-            #line 58 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 59 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(notification.Description));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 59 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 60 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  if(notification.Context != null) { 
             
             #line default
             #line hidden
             this.Write("<pre>\r\n");
             
-            #line 61 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 62 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ToJson(notification.Context)));
             
             #line default
             #line hidden
             this.Write("\r\n</pre>\r\n");
             
-            #line 63 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 64 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t\t\t\t</div>\r\n\t\t\t");
             
-            #line 65 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 66 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
             #line hidden
             this.Write("\t\t</div>\r\n\r\n\t");
             
-            #line 68 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+            #line 69 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
  } 
             
             #line default
@@ -229,7 +229,7 @@ namespace Verifi.Reporters
             return this.GenerationEnvironment.ToString();
         }
         
-        #line 74 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
+        #line 75 "C:\Data\GitHub\Verifi\Verifi\Reporters\HtmlTemplate.tt"
 
 
 	public RunResults Results { get; set; }

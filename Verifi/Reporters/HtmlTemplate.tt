@@ -13,10 +13,10 @@
 		.notice {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
 		.fail.notice {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
 		.note.notice { background:#FFF6BF;color:#514721;border-color:#FFD324;}
-		
-		#failed { background-color: #8a1f11; width: 100%; }
-		#succeeded { background-color: #264409; width: <#= Results.PassRate #>% }
-		
+
+		#failed { background:#8a1f11; width: 100%; border: 1px solid #ddd;}
+		#succeeded { background:#C6D880; width: <#= Results.PassRate #>% }
+
 		#stats { padding:.8em;margin-bottom:1em;border:2px solid #ddd;	}
 		
 	</style>
@@ -28,6 +28,7 @@
 			<div id="succeeded">&nbsp;
 			</div>
 		</div>
+		<br/>
 		Passed: <strong><#=Results.PassCount#></strong> - Failed: <strong><#=Results.FailCount#></strong> - 
 		Total: <strong><#=Results.Total#></strong> - Pass rate: <strong><#=Results.PassRate.ToString("0.##")#>%</strong><br/>
 	</div>
