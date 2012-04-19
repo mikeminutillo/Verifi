@@ -26,7 +26,10 @@ namespace Verifi
 
             }
 
-            reporters = reporters.Concat(Reporters.Where(x => String.Equals(x.Metadata.Name, "console", StringComparison.CurrentCultureIgnoreCase)));
+            reporters = reporters.Concat(
+                Reporters.Where(x => String.Equals(x.Metadata.Name, "console", StringComparison.CurrentCultureIgnoreCase))
+                         .Select(x => x.Value)
+            );
 
             var reporter = reporters.FirstOrDefault();
 

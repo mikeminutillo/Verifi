@@ -2,7 +2,7 @@
 using System.Linq;
 using Newtonsoft.Json;
 
-namespace Verifi
+namespace Verifi.Reporters
 {
     [Reporter("console")]
     class ConsoleReporter : IReporter

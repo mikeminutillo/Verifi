@@ -51,8 +51,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArgAttribute.cs" />
-    <Compile Include="CompositeReporter.cs" />
-    <Compile Include="ConsoleReporter.cs" />
+    <Compile Include="ReporterFilter.cs" />
+    <Compile Include="Reporters\ConsoleReporter.cs" />
     <Compile Include="Events.cs" />
     <Compile Include="IReporter.cs" />
     <Compile Include="Notice.cs" />
