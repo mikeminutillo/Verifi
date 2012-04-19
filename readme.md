@@ -42,9 +42,15 @@ Note that if the call to `DoRun()` results in an exception then the verification
 
 See the sample project for more details.
 
-Verifi is released under the MIT license http://www.opensource.org/licenses/MIT
+Verifi now supports (as of v1.1.0.0) custom reporters and even includes an HTML reporter out of the box. To generate HTML reports add the `report:html` command line argument and redirect the output stream to the desired report file location. i.e.
+
+`$ verifi.exe report:html > myReport.html`
+
+To add your own reporter you need to create a class that does two things. First, it must inherit from `Verifi.IReporter` and implement all of the methods found there. Second, you should decorate your new class with the `Verifi.ReporterAttribute` and pass in the (unique) name of your reporter, you may then specify your reporter on the command line using the `report:<reporterName>` argument.
 
 Credits
 -------
 
 Special thanks go to http://mef.codeplex.com/ and http://james.newtonking.com/projects/json-net.aspx without which Verifi would probably not exist.
+
+Verifi is released under the MIT license http://www.opensource.org/licenses/MIT
