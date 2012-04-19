@@ -10,7 +10,10 @@
     <projectUrl>http://github.com/wolfbyte/verifi</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>
+      1.1.0.0 - Includes HTML reporting. $ verifi report:html > myreport.html
+      1.0.0.0 - Initial Release
+    </releaseNotes>
     <copyright>Copyright 2012</copyright>
     <tags>Verification</tags>
   </metadata>
