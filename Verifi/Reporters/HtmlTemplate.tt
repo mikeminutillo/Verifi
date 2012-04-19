@@ -1,0 +1,91 @@
+﻿<#@ template language="C#" #>
+<!DOCTYPE HTML>
+<html>
+<head>
+	<style>
+		.verification { border: 3px solid Black; margin: 5px 0; padding: 10px;}
+		.failed.verification { border-color:#FBC2C4; }
+		.failed.verification h3 { color:#8a1f11; }
+		
+		.successful.verification { background:#E6EFC2;border-color:#C6D880; }
+		.successful.verification h3 { color:#264409; }
+		
+		.notice {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
+		.fail.notice {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
+		.note.notice { background:#FFF6BF;color:#514721;border-color:#FFD324;}
+		
+		#failed { background-color: #8a1f11; width: 100%; }
+		#succeeded { background-color: #264409; width: <#= Results.PassRate #>% }
+		
+		#stats { padding:.8em;margin-bottom:1em;border:2px solid #ddd;	}
+		
+	</style>
+</head>
+<body>
+	<div id="stats">
+		<h1>Verifi: <#=DateTime.Now.ToLongDateString()#> - <#=DateTime.Now.ToShortTimeString()#></h1>
+		<div id="failed">
+			<div id="succeeded">&nbsp;
+			</div>
+		</div>
+		Passed: <strong><#=Results.PassCount#></strong> - Failed: <strong><#=Results.FailCount#></strong> - 
+		Total: <strong><#=Results.Total#></strong> - Pass rate: <strong><#=Results.PassRate.ToString("0.##")#>%</strong><br/>
+	</div>
+
+	<# foreach(var verification in Results.Failed) { #>
+		<div class="verification failed">
+			<h3><#=verification.Name #></h3>
+			<# foreach(var notification in Notifications[verification]) { #>
+				<div class="notice <#=notification.Prefix.ToLower()#>">
+					<#= notification.Description#>
+<# if(notification.Context != null) { #>
+<pre>
+<#=ToJson(notification.Context)#>
+</pre>
+<# } #>
+				</div>
+			<# } #>
+		</div>
+
+	<# } #>
+
+
+	<# foreach(var verification in Results.Passed) { #>
+		<div class="verification successful">
+			<h3><#=verification.Name #></h3>
+			<# foreach(var notification in Notifications[verification]) { #>
+				<div class="notice <#=notification.Prefix.ToLower()#>">
+					<#= notification.Description#>
+<# if(notification.Context != null) { #>
+<pre>
+<#=ToJson(notification.Context)#>
+</pre>
+<# } #>
+				</div>
+			<# } #>
+		</div>
+
+	<# } #>
+</body>
+</html>
+
+
+
+<#+
+
+	public RunResults Results { get; set; }
+	public System.Linq.ILookup<Verification, Notification> Notifications { get; set; }
+
+	public string ToJson(object context)
+	{
+		var serializer = Newtonsoft.Json.JsonSerializer.Create(new Newtonsoft.Json.JsonSerializerSettings());
+		var sb = new System.Text.StringBuilder();
+
+        var writer = new Newtonsoft.Json.JsonTextWriter(new System.IO.StringWriter(sb));
+        writer.Formatting = Newtonsoft.Json.Formatting.Indented;
+
+        serializer.Serialize(writer, context);
+
+		return sb.ToString();
+	}
+#>

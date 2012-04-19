@@ -12,6 +12,7 @@ namespace Verifi
     }
 
     [MetadataAttribute]
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple=false)]
     public class ReporterAttribute : ExportAttribute, IReporterMetadata
     {
         public ReporterAttribute(string name) : base(typeof(IReporter))

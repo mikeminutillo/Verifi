@@ -10,7 +10,7 @@ namespace Verifi
         [ImportMany]
         private IEnumerable<Verification> _verifications = null;
 
-        [ImportMany]
+        [Import]
         private ReporterFilter _reporterFilter = null;
 
         public RunResults Run()
