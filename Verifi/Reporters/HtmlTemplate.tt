@@ -3,22 +3,23 @@
 <html>
 <head>
 	<style>
-		.verification { border: 3px solid Black; margin: 5px 0; padding: 10px;}
-		.failed.verification { border-color:#FBC2C4; }
+		body { font-family: Gerogia; }
+		pre { font-family: Verdana; }
+		.verification { background: #ddd; border-left: 7px solid Black; margin: 7px; padding: 3px 10px; }		
+		.failed.verification { border-color:#8a1f11; }
 		.failed.verification h3 { color:#8a1f11; }
 		
-		.successful.verification { background:#E6EFC2;border-color:#C6D880; }
-		.successful.verification h3 { color:#264409; }
+		.successful.verification { border-color: #329000; }
+		.successful.verification h3 { color:#329000; }
 		
-		.notice {padding:.8em;margin-bottom:1em;border:2px solid #ddd;}
-		.fail.notice {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
-		.note.notice { background:#FFF6BF;color:#514721;border-color:#FFD324;}
+		.notice {padding:.8em;margin-bottom:1em;}
+		.fail.notice {background:#FBE3E4;color:#8a1f11;}
+		.note.notice { background:#FFF6BF;color:#514721;}
 
-		#failed { background:#8a1f11; width: 100%; border: 1px solid #ddd;}
-		#succeeded { background:#C6D880; width: <#= Results.PassRate #>% }
+		#failed { background:#8a1f11; width: 100%; border: 1px solid #666;}
+		#succeeded { background:#329000; width: <#= Results.PassRate #>% }
 
-		#stats { padding:.8em;margin-bottom:1em;border:2px solid #ddd;	}
-		
+		#stats { font-family: Georgia; background: #ddd; border-left:7px solid #ddd; margin: 5px; margin-bottom:1em; padding: 3px 10px; }
 	</style>
 </head>
 <body>

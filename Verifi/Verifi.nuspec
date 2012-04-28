@@ -11,6 +11,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>
+      1.1.1.0 - Better HTML reports (prettier)
       1.1.0.0 - Includes HTML reporting. $ verifi report:html > myreport.html
       1.0.0.0 - Initial Release
     </releaseNotes>
